@@ -37,3 +37,8 @@
 #### Experiment 2.2: Modifying port
     This code sets up a chat system where one computer (the server) listens for messages from other computers (clients) using a technology called WebSocket. Originally, the server listened on a particular "door" called port 2000, but we changed it to port 8080. When a client wants to join the chat, it connects to the server's address, which includes the port number (now 8080 instead of 2000). Once connected, clients can send messages to the server, which then shares those messages with all other connected clients. This way, everyone can chat with each other in real-time. We use a special tool (a Rust crate) called tokio_websockets to handle all the complicated communication stuff behind the scenes.
 
+#### Experiment 2.3: Small changes, add IP and Port
+  <img src = "assets\images\2.3 Images.png" alt="Screenshot" width = "800">
+
+  
+To add information about the sender to each client, I modified the handle_connection function in the server.rs file to include the sender's IP address and port number when broadcasting messages. Specifically, I added {addr:?} to the print statements to display the sender's IP and port along with their message. This change helps provide context to the clients about who sent each message, making the chat experience more informative and interactive. Now, when a new client connects to the server, it receives a message indicating the IP and port of the sender. Additionally, when clients send messages, they see their own IP and port appended to their messages, helping them identify their own contributions to the conversation.
